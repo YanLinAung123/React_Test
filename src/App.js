@@ -7,6 +7,14 @@ export default function App(){
     {id:1,name:"Apple" , price:0.99},
     {id:2,name:"Orange" , price:0.89},
   ]);
+
+  const add=()=>{
+    const id=data.length + 1;
+    setData([
+      ...data,
+      {id,name:`Item ${id}`,price:0.01 * id}
+    ]);
+  }
   return (
     <div>
       <h1>Hello React</h1>
@@ -15,6 +23,7 @@ export default function App(){
           <Item name={i.name} price={i.price} />
           ))}
       </ul>
+      <button onClick={add}>Add</button>
     </div>
     );
 }
