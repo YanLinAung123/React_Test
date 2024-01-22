@@ -20,7 +20,7 @@ export default function App(){
       <h1>Hello React</h1>
       <ul>
         {data.map(i=>(
-          <Item name={i.name} price={i.price} />
+          <Item key={i.id} name={i.name} price={i.price} />
           ))}
       </ul>
       <button onClick={add}>Add</button>
