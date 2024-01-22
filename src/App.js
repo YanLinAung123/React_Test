@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {useRef,useState} from "react";
 function Item(props){
   return <li>{props.name}, ${props.price}</li>;
 }
@@ -8,11 +8,16 @@ export default function App(){
     {id:2,name:"Orange" , price:0.89},
   ]);
 
+  const nameRef=useRef();
+  const priceRef=useRef();
+
   const add=()=>{
     const id=data.length + 1;
+    const name=nameRef.current.value;
+    const price=priceRef.current.value;
     setData([
       ...data,
-      {id,name:`Item ${id}`,price:0.01 * id}
+      {id,name,price}
     ]);
   }
   return (
@@ -23,6 +28,8 @@ export default function App(){
           <Item key={i.id} name={i.name} price={i.price} />
           ))}
       </ul>
+      <input type="text" ref={nameRef} /> <br />
+      <input type="text" ref={priceRef} /><br />
       <button onClick={add}>Add</button>
     </div>
     );
