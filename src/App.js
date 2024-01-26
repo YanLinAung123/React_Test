@@ -1,36 +1,11 @@
-import {useRef,useState} from "react";
-function Item(props){
-  return <li>{props.name}, ${props.price}</li>;
-}
+import Toolbar from './Toolbar';
 export default function App(){
-  const [data,setData] =useState([
-    {id:1,name:"Apple" , price:0.99},
-    {id:2,name:"Orange" , price:0.89},
-  ]);
-
-  const nameRef=useRef();
-  const priceRef=useRef();
-
-  const add=()=>{
-    const id=data.length + 1;
-    const name=nameRef.current.value;
-    const price=priceRef.current.value;
-    setData([
-      ...data,
-      {id,name,price}
-    ]);
-  }
   return (
     <div>
-      <h1>Hello React</h1>
-      <ul>
-        {data.map(i=>(
-          <Item key={i.id} name={i.name} price={i.price} />
-          ))}
-      </ul>
-      <input type="text" ref={nameRef} /> <br />
-      <input type="text" ref={priceRef} /><br />
-      <button onClick={add}>Add</button>
+      <Toolbar>
+        <h1>Hello React</h1>
+        <h2>Component Composition</h2>
+      </Toolbar>
     </div>
-    );
+  );
 }
